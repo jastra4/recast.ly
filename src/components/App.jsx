@@ -2,21 +2,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: 'QADS'
+      videos: window.exampleVideoData[0]
     };
     
     this.onChangeVideo = this.onChangeVideo.bind(this);
   }
   
   onChangeVideo(video) {
-    console.log(video, "video");
-    // this.setState({
-    //   videos: video
-    // });
+    this.setState({
+      videos: video
+    });
   }
   
   render() {
-    //console.log(props);
     return (
       <div>
         <nav className="navbar">
