@@ -1,14 +1,22 @@
 class VideoList extends React.Component {
   
+  constructor(props) {
+    super(props);
+  }
+  
   render() {
+    console.log("run", this.props);
+    this.props.onChangeVideo(window.exampleVideoData[3]);
     return (
       <div className="video-list">
         { window.exampleVideoData.map((video, index) => 
-          <VideoListEntry changeVideo={this.changeVideo.bind(this)} key={index} videos={video} />
+          console.log(this.props);
+          <VideoListEntry onChangeVideo={this.props.changeVideo} key={index} videos={video} />
         )}
       </div>
     );
   }
+  
 }
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated

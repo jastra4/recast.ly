@@ -2,20 +2,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: {}
+      videos: 'QADS'
     };
     
-    // this.titleClicked = this.titleClicked.bind(this);
+    this.onChangeVideo = this.onChangeVideo.bind(this);
   }
   
   onChangeVideo(video) {
-    console.log('onChangeVIdeo ran');
-    this.setState({
-      videos: video
-    });
+    console.log(video, "video");
+    // this.setState({
+    //   videos: video
+    // });
   }
   
   render() {
+    //console.log(props);
     return (
       <div>
         <nav className="navbar">
@@ -28,7 +29,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.videos} />
           </div>
           <div className="col-md-5">
-            <VideoList changeVideo={this.onChangeVideo.bind(this)} />
+            <VideoList onChangeVideo={this.onChangeVideo} />
           </div>
         </div>
       </div>

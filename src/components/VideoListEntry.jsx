@@ -7,8 +7,8 @@ class VideoListEntry extends React.Component {
   
   onChangeVideo() {
     console.log('video list entery logged this');
-    this.props.changeVideo('ASD');
-  }
+    // this.props.changeVideo('ASD');
+  } // onClick={this.onChangeVideo}
   
   render() {
     return (
@@ -17,7 +17,7 @@ class VideoListEntry extends React.Component {
           <img className="media-object" src={this.props.videos.snippet.thumbnails.default.url} alt="" />
         </div>
         <div className="media-body">
-          <div onClick={this.onChangeVideo()} className="video-list-entry-title">{this.props.videos.snippet.title}</div>
+          <div onClick={() => this.props.onChangeVideo(this.props.video)} className="video-list-entry-title">{this.props.videos.snippet.title}</div>
           <div className="video-list-entry-detail">{this.props.videos.snippet.description}</div>
         </div>
       </div>
