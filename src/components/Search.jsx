@@ -2,17 +2,32 @@ class Search extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      search: ''
+    };
+  
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   search() {
-    window.searchYouTube();
+    //console.log(this.state.search);
+    window.searchYouTube(this.state.search, this.props.onSearchVideo);
+  }
+
+  onSubmit() {
+    //console.log(this.refs.search.value);
+    this.setState({
+      search: this.refs.search.value
+    });
+    this.search();
   }
 
   render() {
+    //setInterval(function(){console.log(this.state)}, 1000);
     return (
       <div className="search-bar form-inline">
-        <input className="form-control" type="text" />
-        <button className="btn hidden-sm-down">
+        <input className="form-control" type="text" ref="search"/>
+        <button className="btn hidden-sm-down" onClick={this.onSubmit}>
           <span className="glyphicon glyphicon-search"></span>
         </button>
       </div> 

@@ -2,10 +2,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: window.exampleVideoData[0]
+      videos: window.exampleVideoData
     };
     
     this.onChangeVideo = this.onChangeVideo.bind(this);
+    this.onSearchVideo = this.onSearchVideo.bind(this);
   }
   
   onChangeVideo(video) {
@@ -13,21 +14,29 @@ class App extends React.Component {
       videos: video
     });
   }
+
+  onSearchVideo(query) {
+    this.setState({
+      videos: query
+    });
+    console.log('query ran ', query);
+  }
   
   render() {
+    console.log(this.state.videos);
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search />
+            <Search onSearchVideo={this.onSearchVideo}/>
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={this.state.videos} />
+            <VideoPlayer video={this.state.videos[0]} />
           </div>
           <div className="col-md-5">
-            <VideoList onChangeVideo={this.onChangeVideo} />
+            <VideoList onChangeVideo={this.onChangeVideo} videos={this.state.videos} />
           </div>
         </div>
       </div>

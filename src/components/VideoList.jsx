@@ -7,7 +7,7 @@ class VideoList extends React.Component {
   render() {
     return (
       <div className="video-list">
-        { window.exampleVideoData.map((video, index) => 
+        { this.props.videos.map((video, index) => 
           <VideoListEntry onChangeVideo={this.props.onChangeVideo} key={index} videos={video} />
         )}
       </div>
