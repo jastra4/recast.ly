@@ -2,7 +2,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: window.exampleVideoData
+      videoList: window.exampleVideoData
     };
     
     this.onChangeVideo = this.onChangeVideo.bind(this);
@@ -10,20 +10,22 @@ class App extends React.Component {
   }
   
   onChangeVideo(video) {
+    //console.log('onChangeVideo says: ', video);
     this.setState({
-      videos: video
+      video: video
     });
   }
 
   onSearchVideo(query) {
-    this.setState({
-      videos: query
-    });
     console.log('query ran ', query);
+
+    this.setState({
+      videoList: query
+    });
   }
   
   render() {
-    console.log(this.state.videos);
+    //console.log('app ',this.state.videoList);
     return (
       <div>
         <nav className="navbar">
@@ -33,17 +35,16 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={this.state.videos[0]} />
+            <VideoPlayer video={this.state.video} />
           </div>
           <div className="col-md-5">
-            <VideoList onChangeVideo={this.onChangeVideo} videos={this.state.videos} />
+            <VideoList onChangeVideo={this.onChangeVideo} videos={this.state.videoList} />
           </div>
         </div>
       </div>
     );
-  }
+  } 
 }
-
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;

@@ -11,7 +11,13 @@ class Search extends React.Component {
 
   search() {
     //console.log(this.state.search);
-    window.searchYouTube(this.state.search, this.props.onSearchVideo);
+    var options = {
+      q: this.state.search,
+      maxResults: 10,
+      part: 'snippet'
+    };
+
+    window.searchYouTube(options, this.props.onSearchVideo);
   }
 
   onSubmit() {

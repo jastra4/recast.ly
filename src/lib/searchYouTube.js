@@ -1,12 +1,17 @@
 var searchYouTube = (options, callback) => {
-  // TODO
+  // TOD
+
+  const API_KEY = window.YOUTUBE_API_KEY;
   
-  var options = {
-    q: options,
-    maxResults: 10,
-    key: window.YOUTUBE_API_KEY,
-    part: 'snippet'
-  };
+  console.log(options);
+  //var options = {
+
+  options.maxResults = options.max || 10;
+  options.key = options.key || API_KEY;
+    
+  //};
+
+  console.log(options);
 
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',

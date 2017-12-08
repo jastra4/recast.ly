@@ -11,10 +11,12 @@ var getURLSearchParams = function(url) {
 
 var hasSameShape = function(objectOne, objectTwo) {
   if (Object.keys(objectOne).length !== Object.keys(objectTwo).length) {
+    //console.log("A");
     return false;
   }
 
   for (var key in objectOne) {
+    //console.log("B");
     if (!key in objectTwo) {
       return false;
     }
